@@ -11,3 +11,4 @@
 - Applitools: [https://applitools.com/](https://applitools.com/tutorials/quickstart/native-mobile/appium/java)
 - Percy mobile browser testing: https://www.browserstack.com/docs/percy/integrate/appium-mbt
 - Kobiton Visual Testing: https://kobiton.com/capabilities/visual-testing/
+- Testfigma: https://testsigma.com/visual-automation-testing
