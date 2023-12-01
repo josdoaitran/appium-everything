@@ -6,7 +6,7 @@
 - Installation: https://appium.io/docs/en/2.1/quickstart/
 
 # Example and Reference Project:
-- Appium Java with Device Farm: https://github.com/josdoaitran/selenium-tutorial-everything/tree/main/java-selenium-appium-device-farm
+- Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
 
 # Appium with Visual Testing:
 - Applitools: [https://applitools.com/](https://applitools.com/tutorials/quickstart/native-mobile/appium/java)
