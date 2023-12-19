@@ -4,6 +4,7 @@
 
 # Basic Appium:
 - Installation: https://appium.io/docs/en/2.1/quickstart/
+- Apium Inspector: https://github.com/appium/appium-inspector
 - Session Capability: https://appium.io/docs/en/2.3/guides/caps/
 
 # Example and Reference Project:
