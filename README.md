@@ -40,7 +40,7 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 - More options: `appium server --allow-insecure chromedriver_autodownload --allow-cors --base-path=/wd/hub` to enable chromedriver for your testing browser view in mobile, allow insecure connection and base path for connections clients.
 
 
-## Note for migrate Appium 1.x to 2.x
+## Note: Uninstall Appium 1.x and Upgrade to Version 2.x
 
 # Example and Reference Project:
 - Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
