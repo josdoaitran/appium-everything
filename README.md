@@ -41,6 +41,7 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 
 
 ## Note: Uninstall Appium 1.x and Upgrade to Version 2.x
+Refer to this note: https://github.com/josdoaitran/appium-everything/blob/master/install_appium_install_again_appium.md
 
 # Example and Reference Project:
 - Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
