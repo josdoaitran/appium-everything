@@ -4,6 +4,7 @@
 
 # Basic Appium:
 - Installation: https://appium.io/docs/en/2.1/quickstart/
+- Session Capability: https://appium.io/docs/en/2.3/guides/caps/
 
 # Example and Reference Project:
 - Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
