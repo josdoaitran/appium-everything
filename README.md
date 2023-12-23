@@ -48,7 +48,9 @@ Refer to this note: https://github.com/josdoaitran/appium-everything/blob/master
 
 # Appium with Visual Testing:
 - Applitools: [https://applitools.com/](https://applitools.com/tutorials/quickstart/native-mobile/appium/java)
-- Percy mobile browser testing: https://www.browserstack.com/docs/percy/integrate/appium-mbt
+- Percy mobile browser testing: https://www.browserstack.com/docs/percy/integrate/appium-mbt'
+We integrate our mobile automation testing Appium with percy.
+Note that: Percy - Browserstacks supports working with serveral testing tools frameworks as Selenium, Nightwatch, Nightmare, ....
 - Kobiton Visual Testing: https://kobiton.com/capabilities/visual-testing/
 - Testfigma: https://testsigma.com/visual-automation-testing
 
