@@ -43,14 +43,21 @@ PATH=/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$PATH
 ## Note: Uninstall Appium 1.x and Upgrade to Version 2.x
 Refer to this note: https://github.com/josdoaitran/appium-everything/blob/master/install_appium_install_again_appium.md
 
-# Example and Reference Project:
+# Example and Reference Project
 - Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
 
-# Appium with Visual Testing:
+# Appium works with Device Cloud Service:
+Device Cloud Services note:
+-  Device Farm
+-  BrowserStack
+-  SauceLabs
+-  Kobiton
+
+# Appium with Visual Testing
 - Applitools: [https://applitools.com/](https://applitools.com/tutorials/quickstart/native-mobile/appium/java)
 - Percy mobile browser testing: https://www.browserstack.com/docs/percy/integrate/appium-mbt'
-We integrate our mobile automation testing Appium with percy.
-Note that: Percy - Browserstacks supports working with serveral testing tools frameworks as Selenium, Nightwatch, Nightmare, ....
+We integrate our mobile automation testing Appium with Percy.
+Note that: Percy - Browserstacks supports working with several testing tools frameworks such as Selenium, Nightwatch, Nightmare, ...
 - Kobiton Visual Testing: https://kobiton.com/capabilities/visual-testing/
 - Testfigma: https://testsigma.com/visual-automation-testing
 
