@@ -53,6 +53,9 @@ Device Cloud Services note:
 -  SauceLabs
 -  Kobiton
 
+## Appium Java Device Farm
+https://github.com/josdoaitran/appium-everything/tree/master/java-appium-device-farm
+
 # Appium with Visual Testing
 - Applitools: [https://applitools.com/](https://applitools.com/tutorials/quickstart/native-mobile/appium/java)
 - Percy mobile browser testing: https://www.browserstack.com/docs/percy/integrate/appium-mbt'
