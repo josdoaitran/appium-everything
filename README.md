@@ -22,6 +22,10 @@ In these steps, we can apply for almost platforms (Windows, MacOSX, Ubuntu, ...)
 ### On Windows
 we can run this command: `appium ` on your command line.
 ### On MacOSX
+Note check Java version is already installed on your mac:
+```
+/usr/libexec/java_home -V
+```
 we should the below steps to ensure all configurations are set up properly.
 - Configure `~/.zprofile`. Suggest to use `zprofile` instead of using `~/.bash_profile`
 ```
