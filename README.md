@@ -28,8 +28,18 @@ Note check Java version is already installed on your mac:
 ```
 we should the below steps to ensure all configurations are set up properly.
 - Configure `~/.zprofile`. Suggest to use `zprofile` instead of using `~/.bash_profile`
+  Open file .zshenv to edit system environment variable
+  
 ```
-
+JAVA_HOME=`/usr/libexec/java_home -v {{java_version}}`
+ANDROID_HOME=$HOME/Library/Android/sdk
+PATH=$ANDROID_HOME/tools:$PATH
+PATH=$ANDROID_HOME/platform-tools:$PATH
+PATH=/opt/apache-maven-3.8.6/bin:$PATH
+PATH=$GEM_HOME/bin:$PATH
+GEM_HOME=$HOME/.gem
+PATH=/usr/local/bin/aws-profile:$PATH
+PATH=/usr/local/bin/aws-ssm:$PATH
 ```
 - Configurate `~/.bash_profile` properly for Java_Home, Android_Home
 ```
