@@ -23,6 +23,10 @@ In these steps, we can apply for almost platforms (Windows, MacOSX, Ubuntu, ...)
 we can run this command: `appium ` on your command line.
 ### On MacOSX
 we should the below steps to ensure all configurations are set up properly.
+- Configure `~/.zprofile`. Suggest to use `zprofile` instead of using `~/.bash_profile`
+```
+
+```
 - Configurate `~/.bash_profile` properly for Java_Home, Android_Home
 ```
 JAVA_HOME=$(/usr/libexec/java_home -v {{java_version}}
