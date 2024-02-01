@@ -84,3 +84,4 @@ Note that: Percy - Browserstacks supports working with several testing tools fra
 
 # References:
 - https://medium.com/tauk-blog/quick-start-guide-for-setting-up-appium-on-an-m1-mac-a629a70a40cb
+- Demo application: https://github.com/saucelabs/my-demo-app-ios/releases
