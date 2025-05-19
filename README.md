@@ -2,7 +2,7 @@
 - Appium: https://appium.io/docs/en/2.1/
 - Appium 1 to 2: https://appium.io/docs/en/2.1/guides/migrating-1-to-2/
 
-# Basic Appium:
+# Basic Appium
 - Installation: https://appium.io/docs/en/2.1/quickstart/
 - Apium Inspector: https://github.com/appium/appium-inspector
 - Session Capability: https://appium.io/docs/en/2.3/guides/caps/
@@ -63,7 +63,7 @@ Refer to this note: https://github.com/josdoaitran/appium-everything/blob/master
 
 # Example and Reference Project
 - Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
-
+- Basic course Java Appium: [Here](./java-appium-free-course/readme.md)
 # Appium works with Device Cloud Service:
 Device Cloud Services note:
 -  Device Farm
