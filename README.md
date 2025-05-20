@@ -97,4 +97,3 @@ Note that: `Percy - Browserstacks` supports working with several testing tools f
 - Percy mobile browser testing: [https://www.browserstack.com/docs/percy/integrate/appium-mbt](https://www.browserstack.com/docs/percy/integrate/appium-mbt)
 - Kobiton Visual Testing: [https://testsigma.com/visual-automation-testing](https://kobiton.com/capabilities/visual-testing/)
 - Testfigma: [https://testsigma.com/visual-automation-testing](https://testsigma.com/visual-automation-testing)
->>>>>>> f466f22 (update note appium)
