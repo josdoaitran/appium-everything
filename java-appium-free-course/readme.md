@@ -1,7 +1,7 @@
 # Java-Appium Mobile Automation Testing
 Here is a comprehensive overview of key points for Java-Appium mobile automation testing:
 
-## Setup Requirements
+## 1. What is Appium Setup Requirements
 - JDK (8 or higher)
 - Maven or Gradle for dependency management
 - Appium Server
@@ -10,7 +10,7 @@ Here is a comprehensive overview of key points for Java-Appium mobile automation
 
 ## Core Dependencies
 - Java client library for Appium
-- TestNG or JUnit for test management
+- TestNG or JUnit for test management or test framework
 - Selenium WebDriver
 
 ## Essential Components
