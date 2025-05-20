@@ -1,3 +1,8 @@
+# What is Appium, Setup and Installation
+
+## What is Appium
+
+## Setup and Installation
 In these steps, we can apply for almost platforms (Windows, MacOSX, Ubuntu, ...)
 - Install npm from nodejs
 `https://nodejs.org/en/download`

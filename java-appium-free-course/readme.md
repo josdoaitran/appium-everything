@@ -2,6 +2,7 @@
 Here is a comprehensive overview of key points for Java-Appium mobile automation testing:
 
 ## 1. What is Appium Setup Requirements
+- What is appium ?
 - JDK (8 or higher)
 - Maven or Gradle for dependency management
 - Appium Server
