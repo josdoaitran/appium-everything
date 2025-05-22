@@ -8,17 +8,15 @@
 - Session Capability: https://appium.io/docs/en/2.3/guides/caps/
 
 ## Installation Appium (Windows, Mac)
+- Refer to this note: https://github.com/josdoaitran/appium-everything/blob/master/install_appium_install_again_appium.md
 
-
-
-## Note: Uninstall Appium 1.x and Upgrade to Version 2.x
-Refer to this note: https://github.com/josdoaitran/appium-everything/blob/master/install_appium_install_again_appium.md
+- Uninstall Appium 1.x and Upgrade to Version 2.x: TBD
 
 # Example and Reference Project
 - Appium Java with Device Farm: https://github.com/josdoaitran/appium-everything/tree/main/java-appium-device-farm
 - Basic course Java Appium: [Here](./java-appium-free-course/readme.md)
 
-# Appium works with Device Cloud Service:
+# Appium works with Device Cloud Service
 Device Cloud Services note:
 -  Device Farm
 -  BrowserStack

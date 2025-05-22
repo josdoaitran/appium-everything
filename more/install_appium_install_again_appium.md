@@ -1,3 +1,5 @@
+Uninstall Appium via these steps:
+
 ## Run these commands to remove all npm and node_module
 ```
 sudo rm -rf /usr/local/{lib/node{,/.npm,_modules},bin,share/man}/{npm*,node*,man1/node*}
