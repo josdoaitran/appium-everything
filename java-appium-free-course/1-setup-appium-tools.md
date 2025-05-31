@@ -8,6 +8,13 @@
 ## Install Java environment and Editor Tools
 - Suggestion: Using Java 17+ version
 - Download Java via: [https://www.oracle.com/java/technologies/java-se-glance.html](https://www.oracle.com/java/technologies/java-se-glance.html)
+- Configure Java Environment Variable
+In Mac
+```
+/usr/libexec/java_home -V
+export JAVA_HOME=`/usr/libexec/java_home -v 17.0.10`
+```
+In Windows, We can configure the Java System Variable.
 - Check Java in your machine via Terminal or Powershell, exaple:
 ```
 java -version
