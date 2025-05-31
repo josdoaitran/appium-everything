@@ -16,10 +16,11 @@ Detailed Information [Here](./1-setup-appium-tools.md)
 
 ## 2. Install Android Studio, Emulator, Install Android app
 Detailed Information [Here](./2-setup-android-studio-emulator-install-app.md)
+
 ## 3. Install Xcode, Simulator, Install IOS app
 Detailed Information [Here](./3-setup-ios-xcode-simulator-install-app.md)
 
-## Core Dependencies
+## 4. Core Dependencies
 - Java client library for Appium
 - TestNG or JUnit for test management or test framework
 - Selenium WebDriver
