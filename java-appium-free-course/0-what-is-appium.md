@@ -18,7 +18,7 @@ Benefits include lower learning curve for Selenium users, reusable skills across
 - The client interacts with the server through the mobile JSON Wire Protocol, using a session to send commands and receive responses.
 ![appium-architect](./images/appium-architecture.png)
 References:
-- https://www.geeksforgeeks.org/architecture-of-the-appium-framework/
+- [https://www.geeksforgeeks.org/architecture-of-the-appium-framework/](https://www.geeksforgeeks.org/architecture-of-the-appium-framework/)
 
 Here's a more detailed breakdown:
 1. Client: 
