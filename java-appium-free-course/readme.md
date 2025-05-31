@@ -20,10 +20,14 @@ Detailed Information [Here](./2-setup-android-studio-emulator-install-app.md)
 ## 3. Install Xcode, Simulator, Install IOS app
 Detailed Information [Here](./3-setup-ios-xcode-simulator-install-app.md)
 
-## 4. Core Dependencies
+## 4. Java Maven Project - Core Dependencies - Android Appium
 - Java client library for Appium
 - TestNG or JUnit for test management or test framework
 - Selenium WebDriver
+Detailed Information [Here](./4-java-maven-project-appium-android.md)
+
+## 5. Java Maven Project - Core Dependencies - iOS Appium
+Detailed Information [Here](./5-java-maven-project-appium-ios.md)
 
 ## Essential Components
 - DesiredCapabilities configuration
