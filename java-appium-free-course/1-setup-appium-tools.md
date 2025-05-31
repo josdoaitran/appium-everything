@@ -53,3 +53,8 @@ we can run this command: `appium ` on your command line.
 - More options: `appium server --allow-insecure chromedriver_autodownload --allow-cors --base-path=/wd/hub` to enable chromedriver for your testing browser view in mobile, allow insecure connection and base path for connections clients.
 
 # Install Appium Inspector
+- Appium Inspector is as an assistant tools for us to inspect locator of mobile elements
+- Appium Inspector is released in 3 formats:
+Format 1: Standalone desktop application for macOS, Windows, and Linux - download it from the [Releases](https://github.com/appium/appium-inspector/releases) section
+Format 2: Web application - (https://inspector.appiumpro.com)[https://inspector.appiumpro.com] (note that CORS must be enabled in order to connect to an Appium server)
+Format 3: Appium server plugin - see the plugin README for details
