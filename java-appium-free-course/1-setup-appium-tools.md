@@ -1,7 +1,20 @@
-## Setup and Installation
-In these steps, we can apply for almost platforms (Windows, MacOSX, Ubuntu, ...)
+# Installation list
+
+1. Java + IntelliJ
+2. NodeJS
+3. Appium
+4. Appium Inspector
+
+## Install Java environment and Editor Tools
+- Suggestion: Using Java 17+ version
+- Download Java via: [https://www.oracle.com/java/technologies/java-se-glance.html](https://www.oracle.com/java/technologies/java-se-glance.html)
+
+## Intall NodeJS
 - Install npm from nodejs
 `https://nodejs.org/en/download`
+
+## Setup and Installation Appium
+In these steps, we can apply for almost platforms (Windows, MacOSX, Ubuntu, ...)
 - Install Appium 2.0 official version by running this command
 `npm i --location=global appium`
 - Appium for Android by running this command
