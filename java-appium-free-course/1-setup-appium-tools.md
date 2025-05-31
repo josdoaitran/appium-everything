@@ -8,10 +8,17 @@
 ## Install Java environment and Editor Tools
 - Suggestion: Using Java 17+ version
 - Download Java via: [https://www.oracle.com/java/technologies/java-se-glance.html](https://www.oracle.com/java/technologies/java-se-glance.html)
+- Check Java in your machine via Terminal or Powershell, exaple:
+```
+java -version
+java version "17.0.10" 2024-01-16 LTS
+Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240)
+Java HotSpot(TM) 64-Bit Server VM (build 17.0.10+11-LTS-240, mixed mode, sharing)
+```
+- IntelliJ Community tool as Java EDitor tool [https://www.jetbrains.com/idea/download///?section=windows](https://www.jetbrains.com/idea/download///?section=windows)
 
 ## Intall NodeJS
-- Install npm from nodejs
-`https://nodejs.org/en/download`
+- Install npm from nodejs via this [link](https://nodejs.org/en/download)
 
 ## Setup and Installation Appium
 In these steps, we can apply for almost platforms (Windows, MacOSX, Ubuntu, ...)
