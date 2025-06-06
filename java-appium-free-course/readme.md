@@ -4,7 +4,8 @@ Here is a comprehensive overview of key points for Java-Appium mobile automation
 ## 0. What is Appium and Appium Architecture
 - What is Appium ?
 - What is Appium Architecture
-Detailed Information [Here](./0-what-is-appium.md)
+Detailed Information [Here](./0-what-is-appium.md) 
+
 ## 1. What is Appium Setup Requirements
 - JDK (8 or higher)
 - Maven or Gradle for dependency management
@@ -15,10 +16,12 @@ Detailed Information [Here](./0-what-is-appium.md)
 Detailed Information [Here](./1-setup-appium-tools.md)
 
 ## 2. Install Android Studio, Emulator, Install Android app
-Detailed Information [Here](./2-setup-android-studio-emulator-install-app.md)
+- Detailed Information [Here](./2-setup-android-studio-emulator-install-app.md)
+- Android app for practice: [Android Demo App](https://github.com/saucelabs/my-demo-app-android)
 
 ## 3. Install Xcode, Simulator, Install IOS app
-Detailed Information [Here](./3-setup-ios-xcode-simulator-install-app.md)
+- Detailed Information [Here](./3-setup-ios-xcode-simulator-install-app.md)
+- iOS app for practice: [iOS Demo App](https://github.com/saucelabs/my-demo-app-ios)
 
 ## 4. Java Maven Project - Core Dependencies - Android Appium
 - Java client library for Appium

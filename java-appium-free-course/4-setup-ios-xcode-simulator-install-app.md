@@ -6,6 +6,7 @@
 - Apple Developer account (free account is sufficient for simulator)
 - Sufficient disk space (at least 20GB recommended)
 - Intel/Apple Silicon Mac with at least 8GB RAM
+- iOS app for practice: [iOS Demo App](https://github.com/saucelabs/my-demo-app-ios)
 
 ## Step 1: Install Xcode
 1. Open the Mac App Store

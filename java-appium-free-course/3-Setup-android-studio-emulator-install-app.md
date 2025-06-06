@@ -5,6 +5,7 @@
 - Java Development Kit (JDK) installed
 - Sufficient disk space (at least 10GB recommended)
 - Virtualization enabled in BIOS (for Intel/AMD processors)
+- Android app for practice: [Android Demo App](https://github.com/saucelabs/my-demo-app-android)
 
 ## Step 1: Launch Android Studio
 1. Open Android Studio
