@@ -83,14 +83,16 @@ To enable Developer Mode and allow APK file installations on an Android device, 
 2. Navigate to About Phone: Scroll down and tap "About phone" or "About device."
 3. Find Build Number: Tap "Software information" or "Build number."
 4. Unlock Developer Options: Tap "Build number" seven times. You may be prompted to enter your device's security pattern, PIN, or password.
-5. Check for Developer Options: Developer options will now be listed in the Settings menu, usually under the "System" or "About phone" sections. 
+5. Check for Developer Options: Developer options will now be listed in the Settings menu, usually under the "System" or "About phone" sections.
+
 ### Enabling "Install unknown apps":
 1. Access Settings: Open the Settings app.
 2. Navigate to Apps & notifications: Tap "Apps & notifications."
 3. Go to Special app access: Tap "Special app access."
 4. Select Install unknown apps: Tap "Install unknown apps."
 5. Choose a Browser or App: Select the browser or app from where you plan to download APK files (e.g., Chrome, Firefox).
-6. Toggle Allow from this source: Enable the toggle to allow installations from the selected source. 
+6. Toggle Allow from this source: Enable the toggle to allow installations from the selected source.
+
 ### Installing APK Files:
 1. Download the APK: Download the APK file from a trusted source.
 2. Locate the APK: Use a file manager to find the downloaded APK file, usually in the Downloads folder.
