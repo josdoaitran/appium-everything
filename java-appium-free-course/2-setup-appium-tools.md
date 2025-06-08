@@ -58,4 +58,4 @@ we can run this command: `appium ` on your command line.
 
 Format 1: Standalone desktop application for macOS, Windows, and Linux - download it from the [Releases](https://github.com/appium/appium-inspector/releases) section
 
-Format 2: Web application - (https://inspector.appiumpro.com)[https://inspector.appiumpro.com] (note that CORS must be enabled in order to connect to an Appium server)
+Format 2: Web application - [https://inspector.appiumpro.com](https://inspector.appiumpro.com) (note that CORS must be enabled in order to connect to an Appium server)
