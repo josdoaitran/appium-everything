@@ -20,6 +20,8 @@
    nano ~/.zshrc  # For zsh (default in macOS Catalina+)
    # OR
    nano ~/.bash_profile  # For bash
+   # OR
+   nano ~/.zprofile  # For bash
    ```
 
 3. **Add these lines to your profile file**:
@@ -36,6 +38,8 @@
    source ~/.zshrc  # For zsh
    # OR
    source ~/.bash_profile  # For bash
+   # OR
+   source ~/.zprofile
    ```
 
 5. **Verify the configuration**:
@@ -130,6 +134,19 @@ set PATH=%PATH%;%ANDROID_HOME%\platform-tools
    ```bash
    appium driver list
    ```
+   Example:
+   ```
+   appium driver list
+✔ Listing available drivers
+- uiautomator2@4.2.3 [installed (npm)]
+- xcuitest [not installed]
+- espresso [not installed]
+- mac2 [not installed]
+- windows [not installed]
+- safari [not installed]
+- gecko [not installed]
+- chromium [not installed]
+   ```
 4. You should see `uiautomator2` in the list of installed drivers
 
 ## Step 2: Start Appium Server
@@ -162,8 +179,8 @@ Fill in the following capabilities in Appium Inspector:
   "platformName": "Android",
   "appium:automationName": "UiAutomator2",
   "deviceName": "Your_Device_Name",
-  "appPackage": "com.example.app",
-  "appActivity": "com.example.app.MainActivity"
+  "appPackage": "com.saucelabs.mydemoapp",
+  "appActivity": "com.saucelabs.mydemoapp.MainActivity"
 }
 ```
 
@@ -183,6 +200,7 @@ Please refer to input correct value: [https://appium.io/docs/en/latest/guides/ca
 ### Error in Appium Inspector - Android SDK configuration
 ![](./images/appium-inspector-error-android-sdk-configuration.png)
 
+Solution: Follow up the steps in Step 0: Configure Android SDK and ANDROID_HOM
 
 ## Step 6: Find App Package and Activity
 ### Method 1: Using ADB (Recommended)
