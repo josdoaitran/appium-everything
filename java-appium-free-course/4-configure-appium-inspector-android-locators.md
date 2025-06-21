@@ -1,5 +1,5 @@
 # Configuring Appium Inspector for Android App Locators
-
+![](./images/appium-inspector-android.png)
 ## Prerequisites
 - Appium Server installed and running
 - Android device or emulator connected
@@ -178,21 +178,13 @@ Fill in the following capabilities in Appium Inspector:
 {
   "platformName": "Android",
   "appium:automationName": "UiAutomator2",
-  "deviceName": "Your_Device_Name",
-  "appPackage": "com.saucelabs.mydemoapp",
-  "appActivity": "com.saucelabs.mydemoapp.MainActivity"
+  "appium:appPackage": "com.saucelabs.mydemoapp.android",
+  "appium:appActivity": "com.saucelabs.mydemoapp.android.MainActivity",
+  "appium:ap": "/Users/doaitran/Documents/Personal/Smart Testing Lab/mda-2.2.0-25.apk",
+  "appium:noReset": true
 }
 ```
 
-### Optional Capabilities:
-```json
-{
-  "noReset": true,
-  "fullReset": false,
-  "newCommandTimeout": 60,
-  "autoGrantPermissions": true
-}
-```
 ### Error in Capability in Appium Inspector
 ![](./images/appium-inspector-error-capability.png)
 Please refer to input correct value: [https://appium.io/docs/en/latest/guides/caps/](https://appium.io/docs/en/latest/guides/caps/)
