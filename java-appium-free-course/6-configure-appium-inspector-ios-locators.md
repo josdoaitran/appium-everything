@@ -39,3 +39,9 @@ Fill in the following capabilities in Appium Inspector:
   "appium:noReset": true
 }
 ```
+
+# Some common errors and solutions
+
+## Error - Missing Appium Driver XCUITest
+If you miss install XCUITest Driver for your Appium Server, you will receive the error as bellow
+![](./images/appium-inspector-error-missing-xcuitest.png)
