@@ -1,15 +1,41 @@
+# Steps to setup Appium Server and Appium Inspector
+- Install XCUITest Driver
+- Start Appium in MacOSX
+- Setup Capability to inspect locator
 
-
-# Command to install UIautomator2
+## Command to install XCUITest
 
 ```
 appium driver list --installed
-✔ Listing installed drivers
+appium driver install xcuitest
+```
 
-appium driver install uiautomator2
-✔ Checking if 'appium-uiautomator2-driver' is compatible
-✔ Installing 'uiautomator2'
-ℹ Driver uiautomator2@4.2.3 successfully installed
-- automationName: UiAutomator2
-- platformNames: ["Android"]
+After, installed successfully. You expect to receive this result to check you installed successfully or not.
+
+```
+appium driver list
+   ✔ Listing available drivers
+   - uiautomator2@4.2.3 [installed (npm)]
+   - xcuitest [installed (npm)]
+```
+
+## Start Appium Server
+- Open Termninal in your Mac Machine
+- Run this command:
+```
+appium
+```
+
+## Setup Capability to inspect locator
+Fill in the following capabilities in Appium Inspector:
+
+### Required Capabilities:
+```json
+{
+  "platformName": "iOS",
+  "appium:automationName": "XCUITest",
+  "appium:appPackage": "com.saucelabs.mydemoapp.ios",
+  "appium:app": "/Users/doaitran/Documents/Personal/Smart Testing Lab/mda-2.2.0-25.apk",
+  "appium:noReset": true
+}
 ```
