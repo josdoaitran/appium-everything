@@ -58,7 +58,7 @@ Fill in the following capabilities in Appium Inspector:
   "platformName": "iOS",
   "appium:automationName": "XCUITest",
   "appium:appPackage": "com.saucelabs.mydemoapp.ios",
-  "appium:app": "/Users/doaitran/Documents/Personal/Smart Testing Lab/mda-2.2.0-25.apk",
+  "appium:app": "/Users/doaitran/Documents/Personal/Smart Testing Lab/My_Demo_App.app",
   "appium:noReset": true
 }
 ```
