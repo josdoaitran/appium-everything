@@ -26,7 +26,7 @@ mvn archetype:generate -DgroupId=com.smarttestinglab -DartifactId=source-java-ap
 ```
 ## Step 2: Configur the essential dependencies pom.xml
 Add the following dependencies to your `pom.xml`:
-# Java Cucumber
+
 ```xml
 <!-- https://mvnrepository.com/artifact/org.testng/testng -->
 <dependency>
