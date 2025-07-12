@@ -11,6 +11,7 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import javax.lang.model.element.Element;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -51,11 +52,20 @@ public class FirstTestAndroidAppiumTestNG {
     @Test(priority = 1, description = "Verify app launches successfully")
     public void testAppLaunch() {
         System.out.println("Starting testAppLaunch...");
-
         WebElement appLogoAndName = wait.until(ExpectedConditions.visibilityOfElementLocated(
                 AppiumBy.accessibilityId("App logo and name")));
         Assert.assertTrue(appLogoAndName.isDisplayed(), "App Logo should be visible");
         System.out.println("App launched successfully - App Logo is visible");
+    }
+
+    @Test(priority = 2, description = "Verify Menu app")
+    public void testAppMenu() {
+        System.out.println("Starting testAppMenu...");
+        WebElement menuIcon = driver.findElement(AppiumBy.id("com.saucelabs.mydemoapp.android:id/menuIV"));
+        menuIcon.click();
+        WebElement loginInMenu = driver.findElement(AppiumBy.accessibilityId("Login Menu Item"));
+        Assert.assertTrue(loginInMenu.isDisplayed());
+
     }
 
     @AfterMethod
