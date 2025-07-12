@@ -73,7 +73,7 @@ Configure Build
 ```
 
 ## Step 3: Create basic test script without TestNG
-Create `/src/test/java/com/smarttestinglab/FirstTestAndroidAppium.java`:
+Create `/src/test/java/com/smarttestinglab/lesson7/FirstTestAndroidAppium.java`:
 
 ### Define the Capability
 ```java
@@ -98,7 +98,7 @@ driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
 ```
 
 ## Step 4: Create basic test script with TestNG
-Create `/src/test/java/com/smarttestinglab/FirstTestAndroidAppiumTestNG.java`:
+Create `/src/test/java/com/smarttestinglab/lesson8/FirstTestAndroidAppiumTestNG.java`:
 
 ```java
 public class FirstTestAndroidAppiumTestNG {
