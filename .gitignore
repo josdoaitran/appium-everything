@@ -110,3 +110,5 @@ coverage/
 # Application specific
 application.log
 application-*.log
+java-appium-free-course/source-java-appium-free-source/apps/my_demo_app.app
+java-appium-free-course/source-java-appium-free-source/apps/mda-2.2.0-25.apk
