@@ -1,4 +1,4 @@
-package com.smarttestinglab.lesson7;
+package com.smarttestinglab.lesson8;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
@@ -12,7 +12,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class FirstTestAndroidAppium {
+public class FirstTestIosAppium {
 
     // App details for SauceLabs MyDemo Android App
     private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
