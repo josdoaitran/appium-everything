@@ -48,3 +48,5 @@ Here is a comprehensive overview of key points for Java-Appium mobile automation
 - TestNG - Appium First Test for iOS app
 - Element Android Driver
 - Detailed Information [Here](./8-java-maven-project-appium-ios.md)
+
+## 9. Basic Actions
