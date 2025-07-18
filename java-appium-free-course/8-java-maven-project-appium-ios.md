@@ -17,7 +17,7 @@
    - Fill in the project details:
      ```
      GroupId: com.yourcompany
-     ArtifactId: appium-android-test
+     ArtifactId: appium-test
      Version: 1.0-SNAPSHOT
      ```
 or run the command as bellow to create a simple Java maven project
@@ -77,83 +77,77 @@ Create `/src/test/java/com/smarttestinglab/lesson7/FirstTestAndroidAppium.java`:
 
 ### Define the Capability
 ```java
-UiAutomator2Options options = new UiAutomator2Options()
-                .setPlatformName("Android")
-                .setPlatformVersion("11")
-                .setAutomationName("UiAutomator2")
-                .setDeviceName("Android Emulator")
-                .setApp("/Users/doaitran/Documents/Personal/Coding/appium-everything/java-appium-free-course/source-java-appium-free-source/apps/mda-2.2.0-25.apk")
-                .setNoReset(false)
-                .setAutoGrantPermissions(true)
-                .setAppPackage(APP_PACKAGE)
-                .setAppWaitActivity(APP_ACTIVITY);
+XCUITestOptions options = new XCUITestOptions()
+                .setPlatformName("iOS")
+                .setPlatformVersion("18.5")
+                .setDeviceName("iPhone 16 Pro")
+                .setAutomationName("XCUITest")
+                .setApp("/Users/doaitran/Documents/Personal/Smart Testing Lab/source-java-appium-free-source/build/my_demo_app.app")
+                .setNoReset(false);
 ```
 
 ### Define a driver
 
 ```java
-AndroidDriver driver;
-driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
+IOSDriver driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
 ```
 
 ## Step 4: Create basic test script with TestNG
-Create `/src/test/java/com/smarttestinglab/lesson8/FirstTestAndroidAppiumTestNG.java`:
+Create `/src/test/java/com/smarttestinglab/lesson9/FirstTestIosAppiumTestNG.java`:
 
 ```java
-public class FirstTestAndroidAppiumTestNG {
+public class FirstTestIosAppiumTestNG {
+    private IOSDriver driver;
+    public static final String APP_DIRECTORY = "build/my_demo_app.app";
 
-    private AndroidDriver driver;
-    private WebDriverWait wait;
-
-    // App details for SauceLabs MyDemo Android App
-    private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
-    private static final String APP_ACTIVITY = "com.saucelabs.mydemoapp.android.view.activities.MainActivity";
-    private static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
-
-    @BeforeMethod
-    public void setUp() throws MalformedURLException {
-        // Configure UiAutomator2 options for Android
-        UiAutomator2Options options = new UiAutomator2Options()
-                .setPlatformName("Android")
-                .setPlatformVersion("11")
-                .setAutomationName("UiAutomator2")
-                .setDeviceName("Android Emulator")
-                .setApp("/Users/doaitran/Documents/Personal/Coding/appium-everything/java-appium-free-course/source-java-appium-free-source/apps/mda-2.2.0-25.apk")
-                .setNoReset(false)
-                .setAutoGrantPermissions(true)
-                .setAppPackage(APP_PACKAGE)
-                .setAppWaitActivity(APP_ACTIVITY);
-        // Initialize AndroidDriver
-        driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
-        // Initialize WebDriverWait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        System.out.println("Test setup completed successfully");
+    public static String getAppDirectory() {
+        File file = new File(APP_DIRECTORY);
+        return file.getAbsolutePath();
     }
 
-    @Test(priority = 1, description = "Verify app launches successfully")
-    public void testAppLaunch() {
-        System.out.println("Starting testAppLaunch...");
+    @BeforeMethod
+    public void setup() throws MalformedURLException {
+        XCUITestOptions options = new XCUITestOptions()
+                .setPlatformName("iOS")
+                .setPlatformVersion("18.5")
+                .setDeviceName("iPhone 16 Pro")
+                .setAutomationName("XCUITest")
+                .setApp(getAppDirectory())
+                .setNoReset(false);
+        driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
-        WebElement appLogoAndName = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                AppiumBy.accessibilityId("App logo and name")));
-        Assert.assertTrue(appLogoAndName.isDisplayed(), "App Logo should be visible");
-        System.out.println("App launched successfully - App Logo is visible");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        System.out.println("Test Setup completed successfully");
+        WebElement appLogoName = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("AppTitle Icons")));
+        Assert.assertTrue(appLogoName.isDisplayed());
+    }
+
+    @Test(priority = 1)
+    public void testAppProductList() {
+        System.out.println("Test App Product List");
+        WebElement appProductList = driver.findElement(AppiumBy.accessibilityId("title"));
+        Assert.assertTrue(appProductList.isDisplayed());
+        System.out.println("App Product List is visible");
+    }
+
+    @Test(priority = 2)
+    public void testAppMenu(){
+        System.out.println("Test App Menu");
+        System.out.println("Touch on App Menu");
+        WebElement appMenuIcon = driver.findElement(AppiumBy.accessibilityId("More-tab-item"));
+        appMenuIcon.click();
+        System.out.println("Verify App Menu");
+        WebElement appMenuLogin = driver.findElement(AppiumBy.accessibilityId("LogOut-menu-item"));
+        Assert.assertTrue(appMenuLogin.isDisplayed());
+        System.out.println("App Menu Login is visible");
     }
 
     @AfterMethod
     public void tearDown() {
-        if (driver != null) {
-            try {
-                System.out.println("Closing driver...");
-                driver.quit();
-                System.out.println("Driver closed successfully");
-            } catch (Exception e) {
-                System.err.println("Error closing driver: " + e.getMessage());
-            }
-        }
+        driver.quit();
+        System.out.println("Driver closed successfully");
     }
 }
 ```
