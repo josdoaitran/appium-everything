@@ -1,4 +1,4 @@
-package com.smarttestinglab.lesson8;
+package com.smarttestinglab.lesson9.ios;
 
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.options.UiAutomator2Options;
@@ -15,7 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class FirstTestIosAppiumTestNG {
+public class TestBasic1TapSendKeyIos {
     private IOSDriver driver;
     private WebDriverWait wait;
 
@@ -49,22 +49,17 @@ public class FirstTestIosAppiumTestNG {
     }
 
 
-    @Test(priority = 1, description = "Verify app launches successfully")
-    public void testAppLaunch() {
-        System.out.println("Starting testAppLaunch...");
-        WebElement appLogoAndName = wait.until(ExpectedConditions.visibilityOfElementLocated(
-                AppiumBy.accessibilityId("AppLogo Icons")));
-        Assert.assertTrue(appLogoAndName.isDisplayed(), "App Logo should be visible");
-        System.out.println("App launched successfully - App Logo is visible");
-    }
-
-    @Test(priority = 2, description = "Verify Menu app")
-    public void testAppMenu() {
-        System.out.println("Starting testAppMenu...");
-        WebElement menuIcon = driver.findElement(AppiumBy.accessibilityId("More-tab-item"));
+    @Test
+    public void testBasicTapSendKey () {
+        WebElement menuIcon = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/menuIV"));
         menuIcon.click();
-        WebElement loginInMenu = driver.findElement(AppiumBy.accessibilityId("LogOut-menu-item"));
-        Assert.assertTrue(loginInMenu.isDisplayed());
-
+        WebElement loginOptionMenu = driver.findElement(AppiumBy.accessibilityId("Login Menu Item"));
+        loginOptionMenu.click();
+        WebElement username = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/nameET"));
+        username.sendKeys("bod@example.com");
+        WebElement password = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/passwordET"));
+        password.sendKeys("10203040");
+        WebElement loginButton = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/loginBtn"));
+        loginButton.click();
     }
 }

@@ -6,9 +6,11 @@ import io.appium.java_client.android.options.UiAutomator2Options;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -20,7 +22,11 @@ public class TestBasic1TapSendKeyAndroid {
     private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
     private static final String APP_ACTIVITY = "com.saucelabs.mydemoapp.android.view.activities.MainActivity";
     private static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
-
+    private static final String APP_DIRECTORY = "apps/mda-2.2.0-25.apk";
+    public static String getAppDirectory() {
+        File file = new File(APP_DIRECTORY);
+        return file.getAbsolutePath();
+    }
     @BeforeMethod
     public void setUp() throws MalformedURLException {
         // Configure UiAutomator2 options for Android
@@ -29,19 +35,27 @@ public class TestBasic1TapSendKeyAndroid {
                 .setPlatformVersion("11")
                 .setAutomationName("UiAutomator2")
                 .setDeviceName("Android Emulator")
-                .setApp("/Users/doaitran/Documents/Personal/Coding/appium-everything/java-appium-free-course/source-java-appium-free-source/apps/mda-2.2.0-25.apk")
+                .setApp(getAppDirectory())
                 .setNoReset(false)
                 .setAutoGrantPermissions(true)
                 .setAppPackage(APP_PACKAGE)
                 .setAppWaitActivity(APP_ACTIVITY);
+        // Initialize AndroidDriver
         driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
+        // Initialize WebDriverWait
         wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         System.out.println("Test setup completed successfully");
     }
 
+    @AfterMethod
+    public void tearDown() {
+        driver.quit();
+    }
+
     @Test
-    public void testBasicTapSendKey() {
+    public void testBasicTapSendKey () {
         WebElement menuIcon = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/menuIV"));
         menuIcon.click();
         WebElement loginOptionMenu = driver.findElement(AppiumBy.accessibilityId("Login Menu Item"));

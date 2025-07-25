@@ -12,6 +12,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import javax.lang.model.element.Element;
+import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
@@ -26,7 +27,11 @@ public class FirstTestAndroidAppiumTestNG {
     private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
     private static final String APP_ACTIVITY = "com.saucelabs.mydemoapp.android.view.activities.MainActivity";
     private static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
-
+    private static final String APP_DIRECTORY = "apps/mda-2.2.0-25.apk";
+    public static String getAppDirectory() {
+        File file = new File(APP_DIRECTORY);
+        return file.getAbsolutePath();
+    }
     @BeforeMethod
     public void setUp() throws MalformedURLException {
         // Configure UiAutomator2 options for Android
@@ -35,7 +40,7 @@ public class FirstTestAndroidAppiumTestNG {
                 .setPlatformVersion("11")
                 .setAutomationName("UiAutomator2")
                 .setDeviceName("Android Emulator")
-                .setApp("/Users/doaitran/Documents/Personal/Coding/appium-everything/java-appium-free-course/source-java-appium-free-source/apps/mda-2.2.0-25.apk")
+                .setApp(getAppDirectory())
                 .setNoReset(false)
                 .setAutoGrantPermissions(true)
                 .setAppPackage(APP_PACKAGE)
