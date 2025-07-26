@@ -3,6 +3,7 @@ package com.smarttestinglab.lesson8;
 import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -29,23 +30,21 @@ public class FirstTestIosAppiumTestNG {
         return file.getAbsolutePath();
     }
     @BeforeMethod
-    public void setUp() throws MalformedURLException {
-        // Configure UiAutomator2 options for iOS
-        UiAutomator2Options options = new UiAutomator2Options()
+    public void setup() throws MalformedURLException {
+        XCUITestOptions options = new XCUITestOptions()
                 .setPlatformName("iOS")
                 .setPlatformVersion("18.5")
+                .setDeviceName("iPhone 16 Pro")
                 .setAutomationName("XCUITest")
-                .setDeviceName("iPhone 14")
                 .setApp(getAppDirectory())
-                .setNoReset(false)
-                .setAutoGrantPermissions(true);
-        // Initialize IOSDriver
-        driver = new IOSDriver(new URL(APPIUM_SERVER_URL), options);
-        // Initialize WebDriverWait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                .setNoReset(false);
+        driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        System.out.println("Test setup completed successfully");
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        System.out.println("Test Setup completed successfully");
+        WebElement appLogoName = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("AppTitle Icons")));
+        Assert.assertTrue(appLogoName.isDisplayed());
     }
 
 

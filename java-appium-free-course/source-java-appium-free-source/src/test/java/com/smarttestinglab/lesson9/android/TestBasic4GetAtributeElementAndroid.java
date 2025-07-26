@@ -6,8 +6,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.PointerInput;
-import org.openqa.selenium.interactions.Sequence;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -17,7 +15,6 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.Arrays;
 
 public class TestBasic4GetAtributeElementAndroid {
     private AndroidDriver driver;
@@ -45,8 +42,6 @@ public class TestBasic4GetAtributeElementAndroid {
         // Initialize AndroidDriver
         driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
         // Initialize WebDriverWait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         System.out.println("Test setup completed successfully");
     }
