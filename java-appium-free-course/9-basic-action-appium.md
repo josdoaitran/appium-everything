@@ -42,7 +42,27 @@ Assert.assertTrue(productTitle.isDisplayed());
 Assert.assertEquals(productTitle.getText(), "Products");
 ```
 
-### 3. Swipe Gestures
+### 3. Get Attribute Element Actions
+Get Attribute Element to verify more.
+```java
+// Get various attributes
+String elementText = menuButton.getAttribute("text");
+String elementClass = menuButton.getAttribute("class");
+String elementEnabled = menuButton.getAttribute("enabled");
+boolean elementDisplayed = menuButton.isDisplayed();
+Dimension elementSize = menuButton.getSize();
+Point elementLocation = menuButton.getLocation();
+
+System.out.println("✓ Element attributes retrieved:");
+System.out.println("  - Text: " + elementText);
+System.out.println("  - Class: " + elementClass);
+System.out.println("  - Enabled: " + elementEnabled);
+System.out.println("  - Displayed: " + elementDisplayed);
+System.out.println("  - Size: " + elementSize);
+System.out.println("  - Location: " + elementLocation);
+```
+
+### 4. Swipe Gestures
 Implementing swipe actions for navigation and scrolling:
 
 ```python
@@ -93,26 +113,6 @@ private void performSwipe(double[] startPoint, double[] endPoint, String directi
                 new double[]{0.5, 0.8}, // Middle-bottom of screen
                 "top to bottom"
     );
-```
-
-### 4. Get Attribute Element Actions
-Get Attribute Element to verify more.
-```java
-// Get various attributes
-String elementText = menuButton.getAttribute("text");
-String elementClass = menuButton.getAttribute("class");
-String elementEnabled = menuButton.getAttribute("enabled");
-boolean elementDisplayed = menuButton.isDisplayed();
-Dimension elementSize = menuButton.getSize();
-Point elementLocation = menuButton.getLocation();
-
-System.out.println("✓ Element attributes retrieved:");
-System.out.println("  - Text: " + elementText);
-System.out.println("  - Class: " + elementClass);
-System.out.println("  - Enabled: " + elementEnabled);
-System.out.println("  - Displayed: " + elementDisplayed);
-System.out.println("  - Size: " + elementSize);
-System.out.println("  - Location: " + elementLocation);
 ```
 
 ### 5. Multiple Elements Action
