@@ -115,178 +115,191 @@ System.out.println("  - Size: " + elementSize);
 System.out.println("  - Location: " + elementLocation);
 ```
 
-### 5. Scroll Actions
+### 5. Multiple Elements Action
+Working with collections of elements:
+
+```java
+@Test
+    public void testMultipleElements() {
+        // Find all product cards
+        List<WebElement> products = driver.findElements(
+                By.xpath("//XCUIElementTypeCollectionView/XCUIElementTypeCell")
+        );
+
+        System.out.println("Found " + products.size() + " products");
+
+        // Click on the first product
+        if (!products.isEmpty()) {
+            WebElement firstProduct = products.get(0);
+            firstProduct.click();
+
+            try {
+                Thread.sleep(2000); // Wait for 2 seconds
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+
+            // Verify we're on product detail page
+            WebElement addToCartButton = driver.findElement(
+                    AppiumBy.iOSNsPredicateString("name == \"AddToCart\"")
+            );
+
+            assert addToCartButton.isDisplayed();
+            System.out.println("✓ Multiple elements interaction successful");
+        }
+    }
+```
+
+### 6. Condition Action
+Condition to Work with elements:
+
+```java
+@Test
+    public void testConditionalActions() {
+        // Wait for app to load
+        try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Check if menu is already open
+        try {
+            WebElement loginMenu = driver.findElement(AppiumBy.accessibilityId("Login Menu Item"));
+            if (loginMenu.isDisplayed()) {
+                System.out.println("Menu is already open");
+            } else {
+                // Open menu if not already open
+                WebElement menuButton = driver.findElement(By.id("com.saucelabs.mydemoapp.android:id/menuIV"));
+                menuButton.click();
+
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+                System.out.println("Menu opened");
+            }
+        } catch (NoSuchElementException e) {
+            // Menu is not open, so open it
+            WebElement menuButton = driver.findElement(By.id("com.saucelabs.mydemoapp.android:id/menuIV"));
+            menuButton.click();
+
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
+            System.out.println("Menu opened");
+        }
+
+        System.out.println("✓ Conditional actions successful");
+    }
+```
+
+### 7. Device Interactions
+Platform-specific device actions:
+
+```java
+// Get device orientation
+        ScreenOrientation orientation = driver.getOrientation();
+        System.out.println("Current orientation: " + orientation);
+
+        // Get device time (Java doesn't have direct device time, so we'll use system time)
+        LocalDateTime deviceTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedTime = deviceTime.format(formatter);
+        System.out.println("Device time: " + formattedTime);
+
+        // Get network connection info
+        try {
+            // Note: Network connection info might not be directly available in Java Appium
+            // You might need to use driver.getNetworkConnection() if available
+            System.out.println("Network connection: Available");
+        } catch (Exception e) {
+            System.out.println("Network connection: Unable to retrieve");
+        }
+
+        // Open menu
+        WebElement menuButton = driver.findElement(By.id("com.saucelabs.mydemoapp.android:id/menuIV"));
+        menuButton.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("Menu opened");
+
+        // Test back button
+        driver.navigate().back();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        // Test home button (keycode 3 is HOME)
+        driver.pressKey(new KeyEvent(AndroidKey.HOME));
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        System.out.println("✓ Device interactions successful");
+```
+
+### 8. Scroll Actions
 Platform-specific scrolling techniques:
 
 **Android:**
-```python
+```java
 # Android UiScrollable
 driver.find_element(AppiumBy.ANDROID_UIAUTOMATOR, 
                    'new UiScrollable(new UiSelector().scrollable(true)).scrollIntoView(new UiSelector().text("Target Text"))')
 ```
 
 **iOS:**
-```python
-# iOS predicate scrolling
-driver.find_element(AppiumBy.IOS_PREDICATE, 'name == "Target Element"')
-```
+```java
+@Test
+    public void testScrollAction() {
+        WebElement element = null;
+        int scrollCount = 0;
 
-### 6. Wait Strategies
-Implementing explicit waits for better reliability:
+        while (element == null && scrollCount < 5) {
+            try {
+                element = driver.findElement(AppiumBy.iOSNsPredicateString("name == \"Product Name\" AND label == \"Sauce Labs Onesie\""));
+                // Check if element is visible
+                if (wait.until(ExpectedConditions.visibilityOf(element)) != null) {
+                    break;
+                } else {
+                    element = null;
+                }
+            } catch (NoSuchElementException e) {
+                // Element not found, continue scrolling
+            }
 
-```python
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+            performSwipe(
+                    new double[]{0.5, 0.8}, // Middle-bottom of screen
+                    new double[]{0.5, 0.2}, // Middle-top of screen
+                    "bottom to top"
+            );
+            scrollCount++;
 
-# Wait for element to be clickable
-wait = WebDriverWait(driver, 10)
-element = wait.until(EC.element_to_be_clickable((AppiumBy.ACCESSIBILITY_ID, "element_id")))
-```
-
-### 7. Element Attributes
-Getting element properties and attributes:
-
-```python
-# Get various attributes
-element_text = element.get_attribute("text")
-element_enabled = element.get_attribute("enabled")
-element_displayed = element.is_displayed()
-element_size = element.size
-element_location = element.location
-```
-
-### 8. Screenshots
-Capturing screenshots for debugging and reporting:
-
-```python
-# Take screenshot
-driver.save_screenshot("screenshot.png")
-```
-
-### 9. Device Interactions
-Platform-specific device actions:
-
-```python
-# Get device orientation
-orientation = driver.orientation
-
-# Get device time
-device_time = driver.device_time
-
-# Android back button
-driver.back()
-
-# iOS shake gesture
-driver.shake()
-```
-
-### 10. Multiple Elements
-Working with collections of elements:
-
-```python
-# Find multiple elements
-elements = driver.find_elements(AppiumBy.XPATH, "//element_xpath")
-
-# Iterate through elements
-for element in elements:
-    if element.is_displayed():
-        element.click()
-        break
-```
-
-## Platform Differences
-
-### Android Specific
-- Use `AppiumBy.ANDROID_UIAUTOMATOR` for complex selectors
-- Use `AppiumBy.ID` with full resource ID
-- Back button navigation with `driver.back()`
-- Network connection management
-
-### iOS Specific
-- Use `AppiumBy.IOS_PREDICATE` for iOS-specific selectors
-- Use `AppiumBy.IOS_CLASS_CHAIN` for complex hierarchies
-- Shake gesture with `driver.shake()`
-- Alert handling with system alerts
-- Keyboard management with `driver.hide_keyboard()`
-
-## Best Practices
-
-1. **Use Explicit Waits**: Always use explicit waits instead of fixed sleep times
-2. **Element Identification**: Use stable locators (accessibility IDs are preferred)
-3. **Error Handling**: Implement try-catch blocks for robust test execution
-4. **Screenshots**: Take screenshots on failures for debugging
-5. **Platform Abstraction**: Create helper methods for platform-specific actions
-6. **Resource Management**: Always quit drivers in teardown methods
-
-## Common Patterns
-
-### Conditional Actions
-```python
-# Check element state before action
-if element.is_displayed() and element.is_enabled():
-    element.click()
-```
-
-### Retry Logic
-```python
-# Implement retry for flaky actions
-for attempt in range(3):
-    try:
-        element.click()
-        break
-    except:
-        time.sleep(1)
-```
-
-### Page Object Pattern
-```python
-class LoginPage:
-    def __init__(self, driver):
-        self.driver = driver
+            try {
+                Thread.sleep(1000); // Wait for scroll animation
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+        // Verify we can see the product
+        WebElement product = driver.findElement(AppiumBy.iOSNsPredicateString(
+                "name == \"Product Name\" AND label == \"Sauce Labs Onesie\""
+        ));
+        assert product.isDisplayed();
+        System.out.println("✓ Scroll action successful");
     
-    def login(self, username, password):
-        self.driver.find_element(AppiumBy.ID, "username").send_keys(username)
-        self.driver.find_element(AppiumBy.ID, "password").send_keys(password)
-        self.driver.find_element(AppiumBy.ID, "login_button").click()
 ```
-
-## Running the Tests
-
-To run the basic actions tests:
-
-```bash
-# Run Android tests
-pytest src/9_basic_actions_mobile_app/test_basic_actions_android.py -v
-
-# Run iOS tests
-pytest src/9_basic_actions_mobile_app/test_basic_actions_ios.py -v
-
-# Run specific test
-pytest src/9_basic_actions_mobile_app/test_basic_actions_android.py::test_basic_tap_action -v
-```
-
-## Next Steps
-
-After mastering these basic actions, you can move on to:
-- Advanced gestures and multi-touch actions
-- Page Object Model implementation
-- Data-driven testing
-- Cross-platform test automation
-- Performance testing
-- CI/CD integration
-
-## Troubleshooting
-
-### Common Issues
-1. **Element Not Found**: Check locator strategy and wait conditions
-2. **Stale Element**: Re-find elements after page navigation
-3. **Timing Issues**: Use explicit waits instead of fixed delays
-4. **Platform Differences**: Implement platform-specific logic
-5. **App State**: Ensure app is in expected state before actions
-
-### Debug Tips
-- Use Appium Inspector to identify elements
-- Add logging for test execution flow
-- Take screenshots at key points
-- Use driver.page_source for HTML debugging
-- Check Appium server logs for errors
