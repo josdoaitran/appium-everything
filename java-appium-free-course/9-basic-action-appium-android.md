@@ -47,27 +47,72 @@ Implementing swipe actions for navigation and scrolling:
 
 ```python
 # Swipe from bottom to top
-actions = ActionChains(driver)
-actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
-actions.w3c_actions.pointer_action.move_to_location(start_x, start_y)
-actions.w3c_actions.pointer_action.pointer_down()
-actions.w3c_actions.pointer_action.move_to_location(end_x, end_y)
-actions.w3c_actions.pointer_action.pointer_up()
-actions.perform()
+private void performSwipe(double[] startPoint, double[] endPoint, String directionName) {
+        try {
+            Thread.sleep(3000); // Wait for 3 seconds
+
+            // Get screen dimensions
+            Dimension screenSize = driver.manage().window().getSize();
+            int width = screenSize.getWidth();
+            int height = screenSize.getHeight();
+
+            // Calculate start and end coordinates based on percentages
+            int startX = (int) (width * startPoint[0]);
+            int startY = (int) (height * startPoint[1]);
+            int endX = (int) (width * endPoint[0]);
+            int endY = (int) (height * endPoint[1]);
+
+            // Create touch action for swipe using PointerInput
+            PointerInput finger = new PointerInput(PointerInput.Kind.TOUCH, "finger");
+            Sequence sequence = new Sequence(finger, 1)
+                    .addAction(finger.createPointerMove(Duration.ZERO, PointerInput.Origin.viewport(), startX, startY))
+                    .addAction(finger.createPointerDown(PointerInput.MouseButton.LEFT.asArg()))
+                    .addAction(finger.createPointerMove(Duration.ofMillis(600), PointerInput.Origin.viewport(), endX, endY))
+                    .addAction(finger.createPointerUp(PointerInput.MouseButton.LEFT.asArg()));
+
+            driver.perform(Arrays.asList(sequence));
+
+            Thread.sleep(2000); // Wait for 2 seconds
+            System.out.println("✓ Swipe " + directionName + " gesture action successful");
+
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+            throw new RuntimeException("Swipe action interrupted", e);
+        }
+    }
+    // Test swipe gesture from bottom to top (scroll up)
+    performSwipe(
+                new double[]{0.5, 0.8}, // Middle-bottom of screen
+                new double[]{0.5, 0.2}, // Middle-top of screen
+                "bottom to top"
+    );
+
+    // Test swipe gesture from top to bottom (scroll down)
+    performSwipe(
+                new double[]{0.5, 0.2}, // Middle-top of screen
+                new double[]{0.5, 0.8}, // Middle-bottom of screen
+                "top to bottom"
+    );
 ```
 
-### 4. Long Press Actions
-Performing long press for context menus or special actions:
+### 4. Get Attribute Element Actions
+Get Attribute Element to verify more.
+```java
+// Get various attributes
+String elementText = menuButton.getAttribute("text");
+String elementClass = menuButton.getAttribute("class");
+String elementEnabled = menuButton.getAttribute("enabled");
+boolean elementDisplayed = menuButton.isDisplayed();
+Dimension elementSize = menuButton.getSize();
+Point elementLocation = menuButton.getLocation();
 
-```python
-# Long press action
-actions = ActionChains(driver)
-actions.w3c_actions = ActionBuilder(driver, mouse=PointerInput(interaction.POINTER_TOUCH, "touch"))
-actions.w3c_actions.pointer_action.move_to_location(element.location['x'], element.location['y'])
-actions.w3c_actions.pointer_action.pointer_down()
-actions.w3c_actions.pointer_action.pause(2.0)
-actions.w3c_actions.pointer_action.pointer_up()
-actions.perform()
+System.out.println("✓ Element attributes retrieved:");
+System.out.println("  - Text: " + elementText);
+System.out.println("  - Class: " + elementClass);
+System.out.println("  - Enabled: " + elementEnabled);
+System.out.println("  - Displayed: " + elementDisplayed);
+System.out.println("  - Size: " + elementSize);
+System.out.println("  - Location: " + elementLocation);
 ```
 
 ### 5. Scroll Actions

@@ -1,12 +1,12 @@
 package com.smarttestinglab.lesson9.android;
 
+import io.appium.java_client.AppiumBy;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -16,8 +16,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class TestBasic4GetAtributeElementAndroid {
+public class TestBasic2VerifyWaitAndroid {
     private AndroidDriver driver;
+    private WebDriverWait wait;
+
     private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
     private static final String APP_ACTIVITY = "com.saucelabs.mydemoapp.android.view.activities.MainActivity";
     private static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
@@ -42,6 +44,8 @@ public class TestBasic4GetAtributeElementAndroid {
         // Initialize AndroidDriver
         driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
         // Initialize WebDriverWait
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         System.out.println("Test setup completed successfully");
     }
@@ -52,32 +56,24 @@ public class TestBasic4GetAtributeElementAndroid {
     }
 
     @Test
-    public void testGetElementAttributes() {
-        try {
-            Thread.sleep(3000);
-
-            // Find menu button
-            WebElement menuButton = driver.findElement(By.id("com.saucelabs.mydemoapp.android:id/menuIV"));
-
-            // Get various attributes
-            String elementText = menuButton.getAttribute("text");
-            String elementClass = menuButton.getAttribute("class");
-            String elementEnabled = menuButton.getAttribute("enabled");
-            boolean elementDisplayed = menuButton.isDisplayed();
-            Dimension elementSize = menuButton.getSize();
-            Point elementLocation = menuButton.getLocation();
-
-            System.out.println("✓ Element attributes retrieved:");
-            System.out.println("  - Text: " + elementText);
-            System.out.println("  - Class: " + elementClass);
-            System.out.println("  - Enabled: " + elementEnabled);
-            System.out.println("  - Displayed: " + elementDisplayed);
-            System.out.println("  - Size: " + elementSize);
-            System.out.println("  - Location: " + elementLocation);
-
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-            throw new RuntimeException("Test interrupted", e);
-        }
+    public void testVerifyElementVisibility() throws InterruptedException {
+        WebElement menuIcon = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/menuIV"));
+        menuIcon.click();
+        WebElement loginOptionMenu = driver.findElement(AppiumBy.accessibilityId("Login Menu Item"));
+        loginOptionMenu.click();
+        WebElement username = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/nameET"));
+        username.sendKeys("bod@example.com");
+        WebElement password = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/passwordET"));
+        password.sendKeys("10203040");
+        WebElement loginButton = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/loginBtn"));
+        wait.until(ExpectedConditions.elementToBeClickable(loginButton));
+        loginButton.click();
+        WebElement productTitle = driver.findElement(AppiumBy.id(APP_PACKAGE + ":id/productTV"));
+        wait.until(ExpectedConditions.visibilityOf(productTitle));
+        wait.until(ExpectedConditions.textToBePresentInElement(productTitle, "Products"));
+//        wait.until(ExpectedConditions.elementToBeClickable(productTitle));
+//        wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.id(APP_PACKAGE + ":id/productTV")));
+        Assert.assertTrue(productTitle.isDisplayed());
+        Assert.assertEquals(productTitle.getText(), "Products");
     }
 }
