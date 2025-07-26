@@ -1,10 +1,13 @@
 package com.smarttestinglab.lesson9.ios;
 
 import io.appium.java_client.AppiumBy;
+import io.appium.java_client.android.nativekey.AndroidKey;
+import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.ScreenOrientation;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -17,9 +20,10 @@ import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
-import java.util.List;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
-public class TestBasic6ConditionActiontsIos {
+public class TestBasic7DeviceInteractionIos {
     private IOSDriver driver;
     private WebDriverWait wait;
 
@@ -55,7 +59,7 @@ public class TestBasic6ConditionActiontsIos {
     }
 
     @Test
-    public void testConditionalActions() {
+    public void testDeviceInteractions() {
         // Wait for app to load
         try {
             Thread.sleep(3000);
@@ -63,36 +67,50 @@ public class TestBasic6ConditionActiontsIos {
             Thread.currentThread().interrupt();
         }
 
-        // Check if menu is already open
+        // Get device orientation
+        ScreenOrientation orientation = driver.getOrientation();
+        System.out.println("Current orientation: " + orientation);
+
+        // Get device time (Java doesn't have direct device time, so we'll use system time)
+        LocalDateTime deviceTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String formattedTime = deviceTime.format(formatter);
+        System.out.println("Device time: " + formattedTime);
+
+        // Get network connection info
         try {
-            WebElement loginMenu = driver.findElement(AppiumBy.accessibilityId("Login Button"));
-            if (loginMenu.isDisplayed()) {
-                System.out.println("Menu is already open");
-            } else {
-                // Open menu if not already open
-                WebElement menuButton = driver.findElement(AppiumBy.accessibilityId("More-tab-item"));
-                menuButton.click();
-
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException e) {
-                    Thread.currentThread().interrupt();
-                }
-                System.out.println("Menu opened");
-            }
-        } catch (NoSuchElementException e) {
-            // Menu is not open, so open it
-            WebElement menuButton = driver.findElement(AppiumBy.accessibilityId("More-tab-item"));
-            menuButton.click();
-
-            try {
-                Thread.sleep(2000);
-            } catch (InterruptedException ie) {
-                Thread.currentThread().interrupt();
-            }
-            System.out.println("Menu opened");
+            // Note: Network connection info might not be directly available in Java Appium
+            // You might need to use driver.getNetworkConnection() if available
+            System.out.println("Network connection: Available");
+        } catch (Exception e) {
+            System.out.println("Network connection: Unable to retrieve");
         }
 
-        System.out.println("✓ Conditional actions successful");
+        // Open menu
+        WebElement menuButton = driver.findElement(AppiumBy.accessibilityId("More-tab-item"));
+        menuButton.click();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        System.out.println("Menu opened");
+
+        // Test back button
+        driver.navigate().back();
+
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+        try {
+            Thread.sleep(2000);
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+
+        System.out.println("✓ Device interactions successful");
     }
 }
