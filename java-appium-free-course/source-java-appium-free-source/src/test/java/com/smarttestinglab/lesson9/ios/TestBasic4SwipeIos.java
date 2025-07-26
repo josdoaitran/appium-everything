@@ -1,12 +1,15 @@
-package com.smarttestinglab.lesson9.android;
+package com.smarttestinglab.lesson9.ios;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.options.UiAutomator2Options;
+import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.ios.options.XCUITestOptions;
 import org.openqa.selenium.Dimension;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.PointerInput;
 import org.openqa.selenium.interactions.Sequence;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -17,38 +20,34 @@ import java.net.URL;
 import java.time.Duration;
 import java.util.Arrays;
 
-public class TestBasic3SwipeAndroid {
-    private AndroidDriver driver;
+public class TestBasic4SwipeIos {
+    private IOSDriver driver;
     private WebDriverWait wait;
 
-    private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
-    private static final String APP_ACTIVITY = "com.saucelabs.mydemoapp.android.view.activities.MainActivity";
-    private static final String APPIUM_SERVER_URL = "http://127.0.0.1:4723";
-    private static final String APP_DIRECTORY = "apps/mda-2.2.0-25.apk";
+    // App details for SauceLabs MyDemo Android App
+    public static final String APP_DIRECTORY = "apps/my_demo_app.app";
+
     public static String getAppDirectory() {
         File file = new File(APP_DIRECTORY);
         return file.getAbsolutePath();
     }
+
     @BeforeMethod
-    public void setUp() throws MalformedURLException {
-        // Configure UiAutomator2 options for Android
-        UiAutomator2Options options = new UiAutomator2Options()
-                .setPlatformName("Android")
-                .setPlatformVersion("11")
-                .setAutomationName("UiAutomator2")
-                .setDeviceName("Android Emulator")
+    public void setup() throws MalformedURLException {
+        XCUITestOptions options = new XCUITestOptions()
+                .setPlatformName("iOS")
+                .setPlatformVersion("18.5")
+                .setDeviceName("iPhone 16 Pro")
+                .setAutomationName("XCUITest")
                 .setApp(getAppDirectory())
-                .setNoReset(false)
-                .setAutoGrantPermissions(true)
-                .setAppPackage(APP_PACKAGE)
-                .setAppWaitActivity(APP_ACTIVITY);
-        // Initialize AndroidDriver
-        driver = new AndroidDriver(new URL(APPIUM_SERVER_URL), options);
-        // Initialize WebDriverWait
-        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                .setNoReset(false);
+        driver = new IOSDriver(new URL("http://127.0.0.1:4723"), options);
 
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        System.out.println("Test setup completed successfully");
+        wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        System.out.println("Test Setup completed successfully");
+        WebElement appLogoName = wait.until(ExpectedConditions.visibilityOfElementLocated(AppiumBy.accessibilityId("AppTitle Icons")));
+        Assert.assertTrue(appLogoName.isDisplayed());
     }
 
     @AfterMethod

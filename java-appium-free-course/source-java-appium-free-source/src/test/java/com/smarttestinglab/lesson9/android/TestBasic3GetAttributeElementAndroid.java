@@ -15,7 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-public class TestBasic4GetAttributeElementAndroid {
+public class TestBasic3GetAttributeElementAndroid {
     private AndroidDriver driver;
     private static final String APP_PACKAGE = "com.saucelabs.mydemoapp.android";
     private static final String APP_ACTIVITY = "com.saucelabs.mydemoapp.android.view.activities.MainActivity";
