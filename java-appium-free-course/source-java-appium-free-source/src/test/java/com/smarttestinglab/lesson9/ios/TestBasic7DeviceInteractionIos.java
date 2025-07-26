@@ -5,10 +5,7 @@ import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 import io.appium.java_client.ios.IOSDriver;
 import io.appium.java_client.ios.options.XCUITestOptions;
-import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.ScreenOrientation;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -22,6 +19,7 @@ import java.net.URL;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Map;
 
 public class TestBasic7DeviceInteractionIos {
     private IOSDriver driver;
@@ -77,6 +75,9 @@ public class TestBasic7DeviceInteractionIos {
         String formattedTime = deviceTime.format(formatter);
         System.out.println("Device time: " + formattedTime);
 
+        String battery_info = driver.getBatteryInfo().getState().name();
+        System.out.println(String.format("✅ Battery info: %s", battery_info));
+
         // Get network connection info
         try {
             // Note: Network connection info might not be directly available in Java Appium
@@ -105,12 +106,9 @@ public class TestBasic7DeviceInteractionIos {
         } catch (InterruptedException e) {
             Thread.currentThread().interrupt();
         }
-        try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
-            Thread.currentThread().interrupt();
-        }
-
+//        Home button
+        ((JavascriptExecutor) driver).executeScript("mobile: pressButton",
+                Map.of("name", "home"));
         System.out.println("✓ Device interactions successful");
     }
 }

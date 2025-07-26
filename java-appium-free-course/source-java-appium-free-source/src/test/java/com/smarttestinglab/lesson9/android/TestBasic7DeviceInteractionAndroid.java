@@ -73,7 +73,8 @@ public class TestBasic7DeviceInteractionAndroid {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String formattedTime = deviceTime.format(formatter);
         System.out.println("Device time: " + formattedTime);
-
+        String battery_info = driver.getBatteryInfo().getState().name();
+        System.out.println(String.format("✅ Battery info: %s", battery_info));
         // Get network connection info
         try {
             // Note: Network connection info might not be directly available in Java Appium
